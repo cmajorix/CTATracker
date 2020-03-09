@@ -1,6 +1,4 @@
 # CTATracker
 CTA bus tracker
 
-it's self explanitory and a work in progress
-
-i spelled that word wrong didn't i
+it's self explanatory and a work in progress
