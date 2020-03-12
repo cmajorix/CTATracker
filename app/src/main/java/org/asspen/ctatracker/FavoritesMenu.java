@@ -14,5 +14,6 @@ public class FavoritesMenu extends AppCompatActivity {
         setContentView(R.layout.activity_favorites_menu);
         Context context = this;
         SharedPreferences sharedPref = context.getSharedPreferences("favorites", Context.MODE_PRIVATE);
+
     }
 }
