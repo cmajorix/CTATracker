@@ -1,6 +1,8 @@
 package org.asspen.ctatracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +14,5 @@ public class FavoritesMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites_menu);
-        Context context = this;
-        SharedPreferences sharedPref = context.getSharedPreferences("favorites", Context.MODE_PRIVATE);
     }
 }
