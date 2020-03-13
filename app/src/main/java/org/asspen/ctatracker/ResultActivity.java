@@ -3,10 +3,8 @@ package org.asspen.ctatracker;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NavUtils;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +46,8 @@ public class ResultActivity extends AppCompatActivity {
         pb = findViewById(R.id.progressBar);
         pb.setVisibility(View.INVISIBLE);
         stopCode = getIntent().getIntExtra("stopcode", 0);
-        stopURL = "http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=Hv9D3gWpkmUJv5a4QX5Mu55xM&format=json&stpid=" + stopCode;
+        Log.d("HELP ME", String.valueOf(stopCode));
+        stopURL = "http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=Hv9D3gWpkmUJv5a4QX5Mu55xM&format=json&stpid=";
         new JsonTask().execute(stopURL + stopCode);
     }
     @Override

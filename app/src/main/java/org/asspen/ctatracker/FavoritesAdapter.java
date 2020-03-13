@@ -2,6 +2,7 @@ package org.asspen.ctatracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavV
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(itemView.getContext(), ResultActivity.class);
-                    i.putExtra("stopcode", "ihavenoidea");
+                    i.putExtra("stopcode", Integer.parseInt(txtId.getText().toString()));
+                    Log.d("value? hello?", txtId.getText().toString());
                     itemView.getContext().startActivity(i);
                 }
             });
