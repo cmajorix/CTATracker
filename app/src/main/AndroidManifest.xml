@@ -13,8 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ResultActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".ResultActivity" />
         <activity
             android:name=".FavoritesMenu"
             android:parentActivityName=".MainActivity" />
