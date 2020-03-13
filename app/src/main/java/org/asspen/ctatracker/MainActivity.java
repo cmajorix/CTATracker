@@ -81,11 +81,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Favorites menu not implemented yet...", Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, FavoritesMenu.class));
             }
         });
     }
     //The JsonTask class is sourced from https://stackoverflow.com/questions/33229869/get-json-data-from-url-using-android from user https://stackoverflow.com/users/6011291/aadigurung
+    //TODO: move this damn class back over to the ResultActivity ya bonehead
     @SuppressLint("StaticFieldLeak")
     private class JsonTask extends AsyncTask<String, String, String> {
 

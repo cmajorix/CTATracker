@@ -1,6 +1,7 @@
 package org.asspen.ctatracker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FavViewHolder> {
-    private ArrayList<String> mDataset0;
-    private ArrayList<String> mDataset1;
+public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavViewHolder> {
+    private ArrayList<String> mDatasetId;
+    private ArrayList<String> mDatasetLabel;
+    Context con;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -28,27 +30,38 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FavViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(Context c, ArrayList<String> al, ArrayList<String> al1) {
-        mDataset = myDataset;
+    public FavoritesAdapter(Context c, ArrayList<String> aId, ArrayList<String> aLabel) {
+        con = c;
+        mDatasetId = aId;
+        mDatasetLabel = aLabel;
     }
 
     public static class FavViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtId;
-        private TextView txtDesc;
-        FavViewHolder(@NonNull View itemView) {
+        TextView txtId;
+        TextView txtLabel;
+        FavViewHolder(@NonNull final View itemView) {
             super(itemView);
             txtId = itemView.findViewById(R.id.txtName);
-            txtDesc = itemView.findViewById(R.id.txtAddress);
+            txtLabel = itemView.findViewById(R.id.txtAddress);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(itemView.getContext(), ResultActivity.class);
+                    i.putExtra("stopcode", "ihavenoidea");
+                    itemView.getContext().startActivity(i);
+                }
+            });
         }
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.FavViewHolder onCreateViewHolder(ViewGroup parent,
+    public FavoritesAdapter.FavViewHolder onCreateViewHolder(ViewGroup parent,
                                                      int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fav_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fav, parent, false);
+
         FavViewHolder vh = new FavViewHolder(v);
         return vh;
     }
@@ -58,13 +71,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.FavViewHolder> {
     public void onBindViewHolder(FavViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.txtDesc.setText(mDataset[position]);
+        holder.txtId.setText(mDatasetId.get(position));
+        holder.txtLabel.setText(mDatasetLabel.get(position));
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDatasetLabel.size();
     }
 }
